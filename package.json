@@ -4,6 +4,7 @@
   "description": "game platform for vscode",
   "publisher": "hp-potion",
   "version": "0.0.1",
+  "icon": "logo.png",
   "engines": {
     "vscode": "^1.84.0"
   },
