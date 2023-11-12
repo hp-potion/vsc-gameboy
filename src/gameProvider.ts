@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import path from 'path';
 
 // TreeDataProvider를 구현하여 VSCode의 트리 뷰에 데이터를 제공하는 클래스
 export class GameProvider implements vscode.TreeDataProvider<GameItem> {
@@ -45,8 +46,8 @@ class GameItem extends vscode.TreeItem {
 
     // 아이콘 경로 설정
     this.iconPath = {
-      light: vscode.Uri.file(path.join(__filename, '..', '..', 'resource', 'light', `${gameId}.svg`)),
-      dark: vscode.Uri.file(path.join(__filename, '..', '..', 'resource', 'dark', `${gameId}.svg`))
+      light: vscode.Uri.file(path.join(__filename, '..', '..', 'resources', 'light', `${gameId}.svg`)),
+      dark: vscode.Uri.file(path.join(__filename, '..', '..', 'resources', 'dark', `${gameId}.svg`))
     };
 
   }
