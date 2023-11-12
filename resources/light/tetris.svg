@@ -1,0 +1,8 @@
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+    <!-- 테트리스 블록 예시 -->
+    <rect x="2" y="2" width="3" height="3" fill="#FF0000"/>
+    <rect x="6" y="2" width="3" height="3" fill="#00FF00"/>
+    <rect x="10" y="2" width="3" height="3" fill="#0000FF"/>
+    <rect x="2" y="6" width="3" height="3" fill="#FFFF00"/>
+    <rect x="6" y="6" width="3" height="3" fill="#FF00FF"/>
+</svg>
