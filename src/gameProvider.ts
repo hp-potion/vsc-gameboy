@@ -31,17 +31,23 @@ export class GameProvider implements vscode.TreeDataProvider<GameItem> {
 // vscode의 TreeItem을 확장하여 게임 아이템을 나타내는 클래스
 class GameItem extends vscode.TreeItem {
   constructor(
-    public readonly label: string, // 트리 아이템의 라벨
-    public readonly collapsibleState: vscode.TreeItemCollapsibleState, // 아이템의 접힘 상태(트리구조이기 때문에, None,Expanded,Collapsed )
-    public readonly gameId: string // 게임을 식별하는 고유 ID 또는 이름
+    public readonly label: string,
+    public readonly collapsibleState: vscode.TreeItemCollapsibleState,
+    public readonly gameId: string
   ) {
     super(label, collapsibleState);
 
-    // 해당 게임 아이템에 연결할 커맨드 설정
     this.command = {
-      command: 'gameboy-dev.helloWorld', // 실행될 커맨드의 식별자
+      command: 'gameboy-dev.helloWorld',
       title: 'Open Game',
-      arguments: [this.gameId] // 커맨드 실행 시 전달될 인자들
+      arguments: [this.gameId]
     };
+
+    // 아이콘 경로 설정
+    this.iconPath = {
+      light: vscode.Uri.file(path.join(__filename, '..', '..', 'resource', 'light', `${gameId}.svg`)),
+      dark: vscode.Uri.file(path.join(__filename, '..', '..', 'resource', 'dark', `${gameId}.svg`))
+    };
+
   }
 }

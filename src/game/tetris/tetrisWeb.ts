@@ -18,8 +18,14 @@ export class TetrisWeb {
     }
 
     private static getHtmlContent(context: vscode.ExtensionContext, webview: vscode.Webview): string {
-        const filePath = vscode.Uri.file(path.join(context.extensionPath, 'src', 'game', 'tetris', 'index.html'));
-        const htmlContent = fs.readFileSync(filePath.fsPath, 'utf8');
+        let htmlContent = fs.readFileSync(path.join(context.extensionPath, 'src', 'game', 'tetris', 'index.html'), 'utf8');
+    
+        // 리소스 경로 변환 (스타일시트, 스크립트, 이미지 등)
+        htmlContent = htmlContent.replace(/(href|src|data)="([^"]*)"/g, (m, p1, p2) => {
+            const onDiskPath = vscode.Uri.file(path.join(context.extensionPath, 'src', 'game', 'tetris', p2));
+            const webViewPath = webview.asWebviewUri(onDiskPath);
+            return `${p1}="${webViewPath}"`;
+        });
+    
         return htmlContent;
-    }
-}
+    }}
