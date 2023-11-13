@@ -42,7 +42,6 @@ initNext();
 showHighScores();
 
 function initNext() {
-  // Calculate size of canvas from constants.
   ctxNext.canvas.width = 4 * BLOCK_SIZE;
   ctxNext.canvas.height = 4 * BLOCK_SIZE;
   ctxNext.scale(BLOCK_SIZE, BLOCK_SIZE);
@@ -61,10 +60,8 @@ function handleKeyPress(event) {
     gameOver();
   } else if (moves[event.keyCode]) {
     event.preventDefault();
-    // Get new state
     let p = moves[event.keyCode](board.piece);
     if (event.keyCode === KEY.SPACE) {
-      // Hard drop
       if (document.querySelector('#pause-btn').style.display === 'block') {
           dropSound.play();
       }else{
@@ -104,7 +101,6 @@ function play() {
     resetGame();
   }
 
-  // If we have an old game running then cancel it
   if (requestId) {
     cancelAnimationFrame(requestId);
   }
@@ -125,7 +121,6 @@ function animate(now = 0) {
     }
   }
 
-  // Clear board before drawing new state.
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
   board.draw();

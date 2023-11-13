@@ -1,8 +1,18 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
+import * as ts from 'typescript';
+import * as fs from 'fs';
 import { GameProvider } from './gameProvider';
 import { numberGameWeb } from './game/numberGame/numbergameWeb';
 import { TetrisWeb } from './game/tetris/tetrisWeb';
+
+function compileTypeScript(filePath: string): string {
+  const tsCode = fs.readFileSync(filePath, 'utf8');
+  const jsCode = ts.transpileModule(tsCode, { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
+  const compiledFilePath = path.join(path.dirname(filePath), path.basename(filePath, '.ts') + '.js');
+  fs.writeFileSync(compiledFilePath, jsCode);
+  return compiledFilePath;
+}
 
 // 확장 프로그램이 활성화될 때 호출되는 메서드
 export function activate(context: vscode.ExtensionContext) {
@@ -18,9 +28,10 @@ export function activate(context: vscode.ExtensionContext) {
   let openGameCommand = vscode.commands.registerCommand('gameboy-dev.helloWorld', (gameId) => {
     console.log('context:',context);
     if (gameId === 'cliGame') {
+      const tsFilePath = path.join(context.extensionPath, '/src/game/cliGame/cliGame.ts');
+      const jsFilePath = compileTypeScript(tsFilePath);
       const terminal = vscode.window.createTerminal('CLI Game');
-      const filePath = path.join(context.extensionPath, '/src/game/cliGame/cliGame.js');
-      terminal.sendText(`node ${filePath}`);
+      terminal.sendText(`node ${jsFilePath}`);
       terminal.show();
     } else if (gameId === 'tetris') {
       TetrisWeb.createOrShow(context);
