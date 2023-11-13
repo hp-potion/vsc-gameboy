@@ -1,10 +1,10 @@
-import * as vscode from 'vscode';
-import { guessNumberGame } from './numbergame';
+import * as vscode from "vscode";
+import { guessNumberGame } from "./numbergame";
 
-export function numberGameWeb (context: vscode.ExtensionContext) {
+export function numberGameWeb(context: vscode.ExtensionContext) {
   const panel = vscode.window.createWebviewPanel(
-    'guessTheNumberGame',
-    'Guess the Number Game',
+    "guessTheNumberGame",
+    "Guess the Number Game",
     vscode.ViewColumn.One,
     { enableScripts: true }
   );
@@ -14,10 +14,10 @@ export function numberGameWeb (context: vscode.ExtensionContext) {
   const correctNumber = Math.floor(Math.random() * 10) + 1; // 1 에서 10사이값
 
   panel.webview.onDidReceiveMessage(
-    message => {
-      if (message.command === 'guess') {
+    (message) => {
+      if (message.command === "guess") {
         const result = guessNumberGame(message.guess, correctNumber);
-        panel.webview.postMessage({ command: 'result', result });
+        panel.webview.postMessage({ command: "result", result });
       }
     },
     undefined,
