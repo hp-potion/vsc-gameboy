@@ -9,7 +9,7 @@ function getHtmlContent(
   game: MetaData
 ): string {
   let htmlContent = fs.readFileSync(
-    path.join(context.extensionPath, "src/game", game.id, "index.html"),
+    path.join(context.extensionPath, "resource/game", game.id, "index.html"),
     "utf8"
   );
 
@@ -18,7 +18,7 @@ function getHtmlContent(
     /(href|src|data)="(?!https)([^"]*)"/g,
     (_: any, type: "href" | "src" | "data", extraPath: string) => {
       const onDiskPath = vscode.Uri.file(
-        path.join(context.extensionPath, "src/game", game.id, extraPath)
+        path.join(context.extensionPath, "resource/game", game.id, extraPath)
       );
       const webViewPath = webview.asWebviewUri(onDiskPath);
       return `${type}="${webViewPath}"`;

@@ -19,7 +19,11 @@ export function activate(context: vscode.ExtensionContext) {
         enableScripts: true, // 스크립트 활성화
         localResourceRoots: [
           vscode.Uri.file(
-            vscode.Uri.joinPath(context.extensionUri, "src", "game", game.id)
+            vscode.Uri.joinPath(context.extensionUri, "src/game", game.id)
+              .fsPath
+          ),
+          vscode.Uri.file(
+            vscode.Uri.joinPath(context.extensionUri, "resource/game", game.id)
               .fsPath
           ),
         ],
