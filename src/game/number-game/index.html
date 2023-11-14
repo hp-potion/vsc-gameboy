@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the Number Game</title>
+  </head>
+  <body>
+    <h1>Guess the Number Game</h1>
+    <input
+      type="number"
+      id="guessInput"
+      placeholder="Enter your guess (1-10)"
+    />
+    <button id="guessButton">Guess!</button>
+    <div id="result"></div>
+
+    <script>
+      const vscode = acquireVsCodeApi();
+      const guessButton = document.getElementById("guessButton");
+      const guessInput = document.getElementById("guessInput");
+      const resultDiv = document.getElementById("result");
+
+      guessButton.addEventListener("click", () => {
+        const guess = parseInt(guessInput.value, 10);
+        vscode.postMessage({ command: "guess", guess });
+      });
+
+      window.addEventListener("message", (event) => {
+        const message = event.data;
+        switch (message.command) {
+          case "result":
+            resultDiv.textContent = message.result;
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>
