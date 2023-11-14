@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
   vscode.window.registerTreeDataProvider("gameExplorer", gameProvider);
   // 'gameExtension.openGame' 커맨드를 등록하고, 실행될 때 createGameWebview 함수를 호출
   const openGamePanel = (context: vscode.ExtensionContext, game: MetaData) => {
-    if(openWebviews.has(game.id)){
+    if (openWebviews.has(game.id)) {
       const webViewPanel = openWebviews.get(game.id);
       webViewPanel?.reveal();
     } else {
@@ -26,8 +26,15 @@ export function activate(context: vscode.ExtensionContext) {
           enableScripts: true, // 스크립트 활성화
           localResourceRoots: [
             vscode.Uri.file(
-              vscode.Uri.joinPath(context.extensionUri, "src", "game", game.id)
+              vscode.Uri.joinPath(context.extensionUri, "src/game", game.id)
                 .fsPath
+            ),
+            vscode.Uri.file(
+              vscode.Uri.joinPath(
+                context.extensionUri,
+                "resource/game",
+                game.id
+              ).fsPath
             ),
           ],
         }
@@ -38,7 +45,6 @@ export function activate(context: vscode.ExtensionContext) {
 
       panel.onDidDispose(() => openWebviews.delete(game.id));
     }
-    
   };
 
   let openGameCommand = vscode.commands.registerCommand(
