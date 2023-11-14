@@ -3,8 +3,9 @@
   "displayName": "vsc-gameboy",
   "description": "game platform for vscode",
   "publisher": "hp-potion",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "icon": "logo.png",
+  "type": "commonjs",
   "engines": {
     "vscode": "^1.84.0"
   },
@@ -18,8 +19,8 @@
       "activitybar": [
         {
           "id": "GameBoy",
-          "title": "it's GameBoy_dev",
-          "icon": "test.svg"
+          "title": "it's VSC-GameBoy",
+          "icon": "resource/icon/activity-bar-icon.svg"
         }
       ]
     },
@@ -33,8 +34,8 @@
     },
     "commands": [
       {
-        "command": "gameboy-dev.helloWorld",
-        "title": "Hello World"
+        "command": "vsc-gameboy.openGame",
+        "title": "Open Game"
       }
     ]
   },
@@ -46,6 +47,9 @@
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
   },
+  "dependencies": {
+    "typescript": "^5.2.2"
+  },
   "devDependencies": {
     "@types/vscode": "^1.84.0",
     "@types/mocha": "^10.0.3",
@@ -55,7 +59,6 @@
     "eslint": "^8.52.0",
     "glob": "^10.3.10",
     "mocha": "^10.2.0",
-    "typescript": "^5.2.2",
     "@vscode/test-electron": "^2.3.6"
   }
 }
