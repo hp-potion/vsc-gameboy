@@ -1,7 +1,7 @@
 # How to contribute
 
-## Befor start contribution
-### You should know few terms
+## Before starting contribution
+### You should know a few terms
 * Game - games in resource directory which considered as a static file
 * Platform - we call the whole system running on extension as platform
 
@@ -71,7 +71,7 @@ you should declare your file meta data in `src > game > meta-data.ts`
   description: "My fancy js game", // description
   author: "Junman Choi", // author
   root: "index.html", // root html file located in your game resource directory(recommend to position on root of your game dir)
-  icon: { // icon will apperr on side bar
+  icon: { // icon will appear on side bar
     light: "image-light.svg", // put images in icon > dark/light
     dark: "image-dark.svg",
   },
