@@ -82,6 +82,9 @@ you should declare your file meta data in `src > game > meta-data.ts`
 ### Rules
 * If you contribute on adding new game, please submit your github repository of html,js game.
 * All mp4 or gif animated videos are welcomed to describe your work.
+* Fork our repository and start developing.
+  * **Do not try to create a new branch in vsc-gameboy repository!**
+  * See : [fork-a-repo](https://docs.github.com/get-started/quickstart/fork-a-repo)
 
 ## Running into problems?
 * feel free to report issues on issue tab
