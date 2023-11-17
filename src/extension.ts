@@ -3,6 +3,7 @@ import { GameProvider } from "./game-provider";
 import metaData, { MetaData } from "./game/meta-data";
 import getHtmlContent from "./util/get-html-content";
 import createIntroPanel from "./util/create-intro-panel";
+import createWebviewPanel from "./util/create-webview-panel";
 
 //WebView 관리 맵(game.id, panel instance)
 const openWebviews = new Map<string, vscode.WebviewPanel>();
@@ -20,28 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
       const webViewPanel = openWebviews.get(game.id);
       webViewPanel?.reveal();
     } else {
-      const panel = vscode.window.createWebviewPanel(
-        game.id, // 웹뷰의 유형
-        game.title, // 사용자에게 표시될 패널 제목
-        vscode.ViewColumn.Active, // 웹뷰 패널을 표시할 에디터 열
-        {
-          retainContextWhenHidden: true,
-          enableScripts: true, // 스크립트 활성화
-          localResourceRoots: [
-            vscode.Uri.file(
-              vscode.Uri.joinPath(context.extensionUri, "src/game", game.id)
-                .fsPath
-            ),
-            vscode.Uri.file(
-              vscode.Uri.joinPath(
-                context.extensionUri,
-                "resource/game",
-                game.id
-              ).fsPath
-            ),
-          ],
-        }
-      );
+      const panel = createWebviewPanel(context, game);
       panel.webview.html = getHtmlContent(context, panel.webview, game);
 
       openWebviews.set(game.id, panel);
