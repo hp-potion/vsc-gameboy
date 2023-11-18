@@ -26,6 +26,17 @@ const metaData = [
     },
   },
   {
+    id: 'star-crusade',
+    title: 'star-crusade',
+    description: 'Are you ready to embark on the journey?',
+    author: 'markets',
+    root: 'index.html',
+    icon: {
+      light: 'star-crusade.svg',
+      dark: 'star-crusade.svg',
+    },
+  },
+  {
     id: 'number-game',
     title: 'Number Game',
     description: 'Guess a number between 1 and 10',
