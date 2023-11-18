@@ -41,8 +41,10 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "compile-old": "tsc -p ./",
+    "watch-old": "tsc -watch -p ./",
+    "compile": "swc src -d out --source-maps",
+    "watch": "swc src -d out --source-maps --watch",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
@@ -51,14 +53,16 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@types/vscode": "^1.84.0",
+    "@swc/cli": "^0.1.63",
+    "@swc/core": "^1.3.96",
     "@types/mocha": "^10.0.3",
     "@types/node": "18.x",
+    "@types/vscode": "^1.84.0",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
+    "@vscode/test-electron": "^2.3.6",
     "eslint": "^8.52.0",
     "glob": "^10.3.10",
-    "mocha": "^10.2.0",
-    "@vscode/test-electron": "^2.3.6"
+    "mocha": "^10.2.0"
   }
 }
