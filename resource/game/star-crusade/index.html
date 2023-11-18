@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Star Crusade 🚀</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #e2e8f0;
+      padding: 1em;
+      font-family: 'Press Start 2P';
+      font-size: 1.2em;
+      text-align: center;
+    }
+    a {
+      color: black;
+    }
+    small {
+      font-size: 12px;
+    }
+    #canvas-container {
+      width: 100%;
+    }
+    canvas {
+      display: inline;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container">
+    <canvas id="game" width="800" height="600"></canvas>
+    <audio id="soundtrack" src="assets/soundtrack.mp3" loop></audio>
+    <audio id="shoot" src="assets/laser.wav"></audio>
+    <audio id="explosion" src="assets/explosion.wav"></audio>
+    <audio id="achievement" src="assets/achievement.wav"></audio>
+    <a id="assets_path" href="assets"></a>
+  </div>
+  <p>◀️▶️ ARROWS 🔫 SPACE 🔈 S</p>
+  <small>💾 <a href="https://github.com/markets/star-crusade" target="_blank">source code</a></small>
+  <script src="game.js"></script>
+</body>
+</html>

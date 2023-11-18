@@ -1,0 +1,35 @@
+name: Feature Suggestion
+description: Report any feature suggestion here. We will be pleased to support you programming!
+labels: ['template: feature']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This template is to help you report bugs of VSC-Gameboy
+        - If you have more questions personally, contact junman9595@gmail.com
+  - type: dropdown
+    id: service-type
+    attributes:
+      label: Which part does this feature is for?(or the part you guess)
+      options:
+        - Game
+        - Platform
+        - Environment
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Feature suggestion
+      description: Describe the feature you require and why it is neccessary.
+      placeholder: |
+        Suggest any feature freely!
+        Images and videos to help your suggestion will be welcomed.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: |
+        Any extra information that might help us to create a new feature.
+      placeholder: |
+        'Not Mandatory'

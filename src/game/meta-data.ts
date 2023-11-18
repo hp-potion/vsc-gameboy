@@ -15,25 +15,36 @@ type MetaData = {
  */
 const metaData = [
   {
-    id: "tetris",
-    title: "Tetris",
-    description: "A simple tetris game",
-    author: "Michael Karen",
-    root: "index.html",
+    id: 'tetris',
+    title: 'Tetris',
+    description: 'A simple tetris game',
+    author: 'Michael Karen',
+    root: 'index.html',
     icon: {
-      light: "tetris.svg",
-      dark: "tetris.svg",
+      light: 'tetris.svg',
+      dark: 'tetris.svg',
     },
   },
   {
-    id: "number-game",
-    title: "Number Game",
-    description: "Guess a number between 1 and 10",
-    author: "Sungjun Park",
-    root: "index.ts",
+    id: 'star-crusade',
+    title: 'star-crusade',
+    description: 'Are you ready to embark on the journey?',
+    author: 'markets',
+    root: 'index.html',
     icon: {
-      light: "tetris.svg",
-      dark: "tetris.svg",
+      light: 'star-crusade.svg',
+      dark: 'star-crusade.svg',
+    },
+  },
+  {
+    id: 'number-game',
+    title: 'Number Game',
+    description: 'Guess a number between 1 and 10',
+    author: 'Sungjun Park',
+    root: 'index.ts',
+    icon: {
+      light: 'tetris.svg',
+      dark: 'tetris.svg',
     },
   },
 ];
