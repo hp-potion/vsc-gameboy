@@ -39,4 +39,4 @@ suite('Extension Test Suite', () => {
       panel.dispose();
     });
   });
-});
+
