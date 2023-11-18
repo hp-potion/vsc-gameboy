@@ -1,6 +1,6 @@
-import * as vscode from "vscode";
-import path from "path";
-import metaData from "./game/meta-data";
+import * as vscode from 'vscode';
+import path from 'path';
+import metaData from './game/meta-data';
 
 // TreeDataProvider를 구현하여 VSCode의 트리 뷰에 데이터를 제공하는 클래스
 export class GameProvider implements vscode.TreeDataProvider<GameItem> {
@@ -17,7 +17,7 @@ export class GameProvider implements vscode.TreeDataProvider<GameItem> {
 
   // 실제 게임 데이터를 바탕으로 게임 목록을 생성하는 메서드 (현재는 더미 데이터 사용)
   private getGames(): GameItem[] {
-    const games = metaData.map((game) => {
+    const games = metaData.map(game => {
       return new GameItem(
         game.title,
         vscode.TreeItemCollapsibleState.None,
@@ -39,13 +39,13 @@ class GameItem extends vscode.TreeItem {
     super(label, collapsibleState);
 
     this.command = {
-      command: "vsc-gameboy.openGame",
-      title: "Open Game",
+      command: 'vsc-gameboy.openGame',
+      title: 'Open Game',
       arguments: [this.gameId],
     };
 
     // 아이콘 경로 설정
-    if (metaData.find((game) => game.id === gameId)?.icon) {
+    if (metaData.find(game => game.id === gameId)?.icon) {
       this.iconPath = {
         light: vscode.Uri.file(
           path.join(__filename, `../../resource/icon/light/${gameId}-light.svg`)
