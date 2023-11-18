@@ -1,24 +1,24 @@
-import path from "path";
-import * as vscode from "vscode";
+import path from 'path';
+import * as vscode from 'vscode';
 
 function createIntroPanel(context: vscode.ExtensionContext) {
   const introPanel = vscode.window.createWebviewPanel(
-    "intro",
-    "vsc-gameboy",
+    'intro',
+    'vsc-gameboy',
     vscode.ViewColumn.One,
     {
       retainContextWhenHidden: true,
       enableScripts: true, // 스크립트 활성화
       localResourceRoots: [
         vscode.Uri.file(
-          vscode.Uri.joinPath(context.extensionUri, "resource/extension").fsPath
+          vscode.Uri.joinPath(context.extensionUri, 'resource/extension').fsPath
         ),
       ],
     }
   );
 
   const onDiskPath = vscode.Uri.file(
-    path.join(context.extensionPath, "resource/extension", "intro.mp4")
+    path.join(context.extensionPath, 'resource/extension', 'intro.mp4')
   );
 
   const introPath = introPanel.webview.asWebviewUri(onDiskPath);
