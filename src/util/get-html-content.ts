@@ -9,7 +9,7 @@ function getHtmlContent(
   game: MetaData
 ): string {
   let htmlContent = fs.readFileSync(
-    path.join(context.extensionPath, "resource/game", game.id, "index.html"),
+    path.join(context.extensionPath, "resource/game", game.id, game.root),
     "utf8"
   );
 
