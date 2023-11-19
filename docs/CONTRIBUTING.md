@@ -1,5 +1,7 @@
 # How to contribute
 
+English | [简体中文](./translations/CONTRIBUTING.zh_cn.md)
+
 ## Before starting contribution
 ### You should know a few terms
 * Game - games in resource directory which considered as a static file
