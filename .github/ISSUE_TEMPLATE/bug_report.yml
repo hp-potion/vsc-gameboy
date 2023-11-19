@@ -54,5 +54,5 @@ body:
     attributes:
       label: Related Issues
       description: If this bug is related to any existing issues, please link them here. This helps us track and manage interconnected problems more effectively.
-      placeholder: 'e.g., #123, #456'
+      placeholder: 'e.g., #2, #32'
 
