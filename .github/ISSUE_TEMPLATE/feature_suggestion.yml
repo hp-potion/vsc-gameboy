@@ -33,3 +33,8 @@ body:
         Any extra information that might help us to create a new feature.
       placeholder: |
         'Not Mandatory'
+  - type: input
+    attributes:
+      label: Related Issues
+      description: If this bug is related to any existing issues, please link them here. This helps us track and manage interconnected problems more effectively.
+      placeholder: 'e.g., #3, #23'
