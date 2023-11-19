@@ -1,7 +1,7 @@
-import * as vscode from "vscode";
-import * as path from "path";
-import * as fs from "fs";
-import { MetaData } from "../game/meta-data";
+import * as vscode from 'vscode';
+import * as path from 'path';
+import * as fs from 'fs';
+import { MetaData } from '../game/meta-data';
 
 function getHtmlContent(
   context: vscode.ExtensionContext,
@@ -20,8 +20,6 @@ function getHtmlContent(
 
       // 점수 전송 함수
       function sendScore(player, score) {
-        console.log("player: ", player);
-        console.log("score: ", score);
         vscode.postMessage({
           command: 'sendScore',
           score: score,
@@ -30,18 +28,14 @@ function getHtmlContent(
       }
     </script>
   `;
-    
-  htmlContent = htmlContent.replace(
-    /<\/body>/,
-    scoreScript + '</body>'
-  );
-  console.log('htmlContent',htmlContent);
+
+  htmlContent = htmlContent.replace(/<\/body>/, scoreScript + '</body>');
 
   htmlContent = htmlContent.replace(
     /(href|src|data)="(?!https)([^"]*)"/g,
-    (_: any, type: "href" | "src" | "data", extraPath: string) => {
+    (_: any, type: 'href' | 'src' | 'data', extraPath: string) => {
       const onDiskPath = vscode.Uri.file(
-        path.join(context.extensionPath, "resource/game", game.id, extraPath)
+        path.join(context.extensionPath, 'resource/game', game.id, extraPath)
       );
       const webViewPath = webview.asWebviewUri(onDiskPath);
       return `${type}="${webViewPath}"`;
