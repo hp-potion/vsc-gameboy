@@ -3,7 +3,7 @@
   "displayName": "vsc-gameboy",
   "description": "game platform for vscode",
   "publisher": "hp-potion",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "icon": "logo.png",
   "type": "commonjs",
   "engines": {
@@ -49,13 +49,14 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "test-util": "mocha"
   },
   "dependencies": {
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@types/vscode": "^1.84.0",
+    "@types/vscode": "^1.80.0",
     "@types/mocha": "^10.0.3",
     "@types/node": "18.x",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
