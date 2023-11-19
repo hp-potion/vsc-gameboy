@@ -9,8 +9,8 @@ function getHtmlContent(
   game: MetaData
 ): string {
   let htmlContent = fs.readFileSync(
-    path.join(context.extensionPath, "resource/game", game.id, "index.html"),
-    "utf8"
+    path.join(context.extensionPath, 'resource/game', game.id, game.root),
+    'utf8'
   );
 
   const scoreScript = `
