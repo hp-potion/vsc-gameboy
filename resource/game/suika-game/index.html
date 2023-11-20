@@ -8,7 +8,6 @@
       defer
       src="https://cdn.jsdelivr.net/npm/matter-js@0.18.0/build/matter.js"
     ></script>
-    <script defer type="module" src="./index.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Press+Start+2P"
       rel="stylesheet"
@@ -17,9 +16,16 @@
   </head>
   <body>
     <a id="resource-path" href="assets"></a>
+    <div id="myModal" class="modal">
+      <p id="game-status">GAME OVER!</p>
+      <button id="game-over-btn">CLOSE</button>
+    </div>
+    <!-- Overlay to darken the background when the modal is open -->
+    <div id="overlay" class="overlay"></div>
     <div id="board" style="position: fixed; left: 650px; top: 100px">
       <span>score</span>
       <span id="score">0</span>
     </div>
   </body>
+  <script defer type="module" src="./index.js"></script>
 </html>

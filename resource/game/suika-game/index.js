@@ -4,6 +4,14 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 const assetPath = document.getElementById('resource-path').href;
 const scoreBoard = document.getElementById('score');
 
+const initGame = (world, engine, walls) => {
+  World.clear(world);
+  Engine.clear(engine);
+  Engine.update(engine);
+  World.add(world, walls);
+  scoreBoard.innerText = 0;
+};
+
 const engine = Engine.create();
 const render = Render.create({
   engine,
@@ -11,7 +19,7 @@ const render = Render.create({
   options: {
     wireframe: false,
     width: 520,
-    height: 800,
+    height: 600,
     background: '#F7F4C7',
     wireframes: false,
   },
@@ -19,29 +27,31 @@ const render = Render.create({
 
 const world = engine.world;
 
-const leftWall = Bodies.rectangle(15, 395, 30, 790, {
+const leftWall = Bodies.rectangle(15, 400, 30, 800, {
   isStatic: true,
   render: { fillStyle: '#E6B143' },
 });
 
-const rightWall = Bodies.rectangle(505, 395, 30, 790, {
+const rightWall = Bodies.rectangle(505, 400, 30, 800, {
   isStatic: true,
   render: { fillStyle: '#E6B143' },
 });
 
-const ground = Bodies.rectangle(260, 820, 520, 100, {
+const ground = Bodies.rectangle(260, 600, 520, 100, {
   isStatic: true,
   render: { fillStyle: '#E6B143' },
 });
 
-const topLine = Bodies.rectangle(210, 150, 620, 2, {
+const topLine = Bodies.rectangle(260, 120, 520, 2, {
   name: 'topLine',
   isStatic: true,
   isSensor: true,
   render: { fillStyle: '#E6B143' },
 });
 
-World.add(world, [leftWall, rightWall, ground, topLine]);
+const walls = [leftWall, rightWall, ground, topLine];
+
+World.add(world, walls);
 
 Render.run(render);
 Runner.run(engine);
@@ -94,7 +104,7 @@ window.onkeydown = function (e) {
             y: currentBody.position.y,
           });
         }
-      }, 5);
+      }, 2);
       break;
     case 'KeyD':
       if (interval) {
@@ -107,7 +117,7 @@ window.onkeydown = function (e) {
             y: currentBody.position.y,
           });
         }
-      }, 5);
+      }, 2);
       break;
     case 'KeyS':
       currentBody.isSleeping = false;
@@ -123,9 +133,6 @@ window.onkeydown = function (e) {
 };
 
 window.onkeyup = function (e) {
-  if (disableAction) {
-    return;
-  }
   switch (e.code) {
     case 'KeyA':
       clearInterval(interval);
@@ -151,7 +158,6 @@ Events.on(engine, 'collisionStart', e => {
         newFruit.radius,
         {
           index: index + 1,
-          isSleeping: false,
           render: {
             sprite: {
               texture: `${assetPath}/${newFruit.name}.png`,
@@ -170,9 +176,25 @@ Events.on(engine, 'collisionStart', e => {
       !disableAction &&
       (collision.bodyA.name === 'topLine' || collision.bodyB.name === 'topLine')
     ) {
-      alert('Game Over');
+      openModal();
+      initGame(world, engine, walls);
     }
   });
 });
 
 addFruit();
+
+function openModal() {
+  const score = scoreBoard.innerText;
+  document.getElementById('game-status').innerText = `${
+    document.getElementById('game-status').innerText
+  } YOUR SCORE : ${score}`;
+  document.getElementById('myModal').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+  document.getElementById('game-over-btn').onclick = closeModal;
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+}
