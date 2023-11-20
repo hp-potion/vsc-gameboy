@@ -44,14 +44,16 @@ class GameItem extends vscode.TreeItem {
       arguments: [this.gameId],
     };
 
-    // 아이콘 경로 설정
-    if (metaData.find(game => game.id === gameId)?.icon) {
+    // setting icon path
+    const game = metaData.find(game => game.id === gameId);
+    if (game) {
+      const iconPath = game.icon;
       this.iconPath = {
         light: vscode.Uri.file(
-          path.join(__filename, `../../resource/icon/light/${gameId}-light.svg`)
+          path.join(__filename, `../../resource/icon/light/${iconPath.light}`)
         ),
         dark: vscode.Uri.file(
-          path.join(__filename, `../../resource/icon/dark/${gameId}-dark.svg`)
+          path.join(__filename, `../../resource/icon/dark/${iconPath.dark}`)
         ),
       };
     }
