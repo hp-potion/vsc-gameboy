@@ -48,7 +48,7 @@
     "compile-old": "tsc -p ./",
     "watch-old": "tsc -watch -p ./",
     "compile": "swc src -d out --source-maps",
-    "watch": "swc src -d out --source-maps --watch",
+    "watch": "swc src -d out --source-maps",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
