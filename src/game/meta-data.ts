@@ -13,7 +13,7 @@ type MetaData = {
 /**
  * Meta data for the games
  */
-const metaData = [
+const metaData: MetaData[] = [
   {
     id: 'tetris',
     title: 'Tetris',
@@ -37,14 +37,14 @@ const metaData = [
     },
   },
   {
-    id: 'number-game',
-    title: 'Number Game',
-    description: 'Guess a number between 1 and 10',
-    author: 'Sungjun Park',
-    root: 'index.ts',
+    id: 'suika-game',
+    title: 'Suika',
+    description: 'Suika like game',
+    author: 'Junman Choi',
+    root: 'index.html',
     icon: {
-      light: 'tetris.svg',
-      dark: 'tetris.svg',
+      light: 'suika.svg',
+      dark: 'suika.svg',
     },
   },
 ];
