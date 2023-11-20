@@ -50,6 +50,10 @@ let currentBody = null;
 let currentFruit = null;
 let disableAction = false;
 let interval = null;
+let dropPosition = {
+  x: 300,
+  y: 50,
+};
 
 let score = 0;
 
@@ -57,7 +61,7 @@ function addFruit() {
   const index = Math.floor(Math.random() * 5);
   const fruit = FRUITS_BASE[index];
 
-  const body = Bodies.circle(300, 50, fruit.radius, {
+  const body = Bodies.circle(dropPosition.x, dropPosition.y, fruit.radius, {
     index: index,
     isSleeping: true,
     render: {
@@ -108,6 +112,7 @@ window.onkeydown = function (e) {
     case 'KeyS':
       currentBody.isSleeping = false;
       disableAction = true;
+      dropPosition.x = currentBody.position.x;
       clearInterval(interval);
       setTimeout(() => {
         addFruit();
