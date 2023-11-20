@@ -1,11 +1,13 @@
-# MiniGames for VSC 
+# VSC-GAMEBOY 
 
 <div align="center">
   <img src="https://github.com/hp-potion/test-bed/blob/main/mainImage.png?raw=true" width="300" >
 </div>
 
 ## Overview
-VCS Mini Game is an innovative extension that transforms the Visual Studio Code environment into a mini-game arena. This allows developers to easily contribute and integrate JavaScript-based games into VSC.
+**It is the world's first multiple game platform for Visual Studio Code extension.**
+
+VSC-gameboy is an innovative extension that transforms the Visual Studio Code environment into a mini-game arena. This allows developers to easily contribute and integrate JavaScript-based games into VSC.
 
 ## Installation
 https://github.com/hp-potion/vsc-gameboy/assets/22022776/5521538c-55e7-4c0c-b753-71af91bc4713
@@ -30,4 +32,4 @@ Learn about contribution [here](https://github.com/hp-potion/vsc-gameboy/blob/ma
 This project exists thanks to all the people who contribute:
 
 ## Contact 
-Instead, please send an email to test@test.com
+Instead, please send an email to junman9595@gmail.com
