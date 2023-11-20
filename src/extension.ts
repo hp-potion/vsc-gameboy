@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
       const panel = createWebviewPanel(context, game);
       panel.webview.html = getHtmlContent(context, panel.webview, game);
 
-      handlePanelMessages(panel, context, game.id);
+      handlePanelMessages(panel, context, game.id, scoreBoardProvider);
       openWebviews.set(game.id, panel);
 
       panel.onDidDispose(() => openWebviews.delete(game.id));

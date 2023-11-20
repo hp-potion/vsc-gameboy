@@ -13,6 +13,15 @@ export class ScoreBoardProvider implements vscode.TreeDataProvider<ScoreItem> {
     private gameId: string
   ) {}
 
+  private _onDidChangeTreeData: vscode.EventEmitter<ScoreItem | undefined> =
+    new vscode.EventEmitter<ScoreItem | undefined>();
+  readonly onDidChangeTreeData: vscode.Event<ScoreItem | undefined> =
+    this._onDidChangeTreeData.event;
+
+  refresh(): void {
+    this._onDidChangeTreeData.fire();
+  }
+
   getTreeItem(element: ScoreItem): vscode.TreeItem {
     return element;
   }
