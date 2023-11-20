@@ -29,6 +29,10 @@
         {
           "id": "gameExplorer",
           "name": "Game Explorer"
+        },
+        {
+          "id": "scoreList",
+          "name": "Score List"
         }
       ]
     },
