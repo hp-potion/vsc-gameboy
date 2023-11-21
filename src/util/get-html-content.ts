@@ -2,23 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { MetaData } from '../game/meta-data';
-
-function addScoreScriptToHtml(htmlContent: string): string {
-  const scoreScript = `
-    <script>
-      const vscode = acquireVsCodeApi();
-      function sendScore(player, score) {
-        vscode.postMessage({
-          command: 'sendScore',
-          score: score,
-          player: player
-        });
-      }
-    </script>
-  `;
-
-  return htmlContent.replace(/<\/body>/, scoreScript + '</body>');
-}
+import addScoreScriptToHtml from './add-score-script';
 
 function getHtmlContent(
   context: vscode.ExtensionContext,
