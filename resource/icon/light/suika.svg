@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <!-- Watermelon rind -->
+    <circle cx="8" cy="11" r="8" fill="#009900" />
+
+    <!-- Watermelon flesh -->
+    <circle cx="8" cy="11" r="6" fill="#ff3366" />
+
+    <!-- Seeds -->
+    <circle cx="8" cy="14" r="1" fill="#000" />
+    <circle cx="9" cy="7" r="1" fill="#000" />
+    <circle cx="7" cy="12" r="1" fill="#000" />
+    <circle cx="4" cy="10" r="1" fill="#000" />
+</svg>

@@ -277,6 +277,7 @@ function render() {
 
   // GAME OVER
   if (Game.gameOver) {
+    sendScore('player1', Game.score);
     play('explosion');
 
     Game.ctx.fillStyle = 'white';
