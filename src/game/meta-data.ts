@@ -36,17 +36,17 @@ const metaData = [
       dark: 'star-crusade.svg',
     },
   },
-  {
-    id: 'number-game',
-    title: 'Number Game',
-    description: 'Guess a number between 1 and 10',
-    author: 'Sungjun Park',
-    root: 'index.ts',
-    icon: {
-      light: 'tetris.svg',
-      dark: 'tetris.svg',
-    },
-  },
+  // {
+  //   id: 'number-game',
+  //   title: 'Number Game',
+  //   description: 'Guess a number between 1 and 10',
+  //   author: 'Sungjun Park',
+  //   root: 'index.ts',
+  //   icon: {
+  //     light: 'tetris.svg',
+  //     dark: 'tetris.svg',
+  //   },
+  // },
 ];
 
 export default metaData;
