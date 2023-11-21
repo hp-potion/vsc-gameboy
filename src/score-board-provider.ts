@@ -19,7 +19,7 @@ export class ScoreBoardProvider implements vscode.TreeDataProvider<ScoreItem> {
     this._onDidChangeTreeData.event;
 
   refresh(): void {
-    this._onDidChangeTreeData.fire();
+    this._onDidChangeTreeData.fire(undefined);
   }
 
   getTreeItem(element: ScoreItem): vscode.TreeItem {
