@@ -28,7 +28,7 @@ function handlePanelMessages(
         scoreBoardProvider.refresh();
         
         getGlobalScoreList(gameId,player,score);
-        globalScoreBoardProvider.getChildren();
+        await globalScoreBoardProvider.getChildren();
         globalScoreBoardProvider.refresh();
       }
       
