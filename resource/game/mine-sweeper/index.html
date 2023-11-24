@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>mine sweeper game</title>
+  </head>
+  <body>
+    <div class="game_wrap">
+      <div class="header">
+        <h1 class="logo">
+          <img src="./assets/mine.png" width="20" alt="" />
+          Minesweeper
+        </h1>
+        <div class="menu">
+          <button type="button" class="btn min"></button>
+          <button type="button" class="btn max"></button>
+          <button type="button" class="btn close"></button>
+        </div>
+      </div>
+      <div class="board_wrap">
+        <div class="status">
+          <span class="digit_wrap">
+            <span id="mines_hundred" class="digit"></span>
+            <span id="mines_ten" class="digit"></span>
+            <span id="mines_one" class="digit"></span>
+          </span>
+          <button type="button" class="btn_start">
+            <span class="blind">start game</span>
+          </button>
+          <span class="digit_wrap">
+            <span id="time_hundred" class="digit"></span>
+            <span id="time_ten" class="digit"></span>
+            <span id="time_one" class="digit"></span>
+          </span>
+        </div>
+        <div class="board" id="board"></div>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
