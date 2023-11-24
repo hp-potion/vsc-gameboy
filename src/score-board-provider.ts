@@ -8,11 +8,12 @@ interface Score {
 }
 
 export class ScoreBoardProvider implements vscode.TreeDataProvider<ScoreItem> {
+
   constructor(
     private context: vscode.ExtensionContext,
     private gameId: string
   ) {}
-
+  
   private _onDidChangeTreeData: vscode.EventEmitter<ScoreItem | undefined> =
     new vscode.EventEmitter<ScoreItem | undefined>();
   readonly onDidChangeTreeData: vscode.Event<ScoreItem | undefined> =
@@ -27,7 +28,7 @@ export class ScoreBoardProvider implements vscode.TreeDataProvider<ScoreItem> {
   }
 
   getChildren(): Thenable<ScoreItem[]> {
-    return this.getScores();
+      return this.getScores();
   }
 
   private getScores(): Thenable<ScoreItem[]> {
@@ -46,10 +47,12 @@ export class ScoreBoardProvider implements vscode.TreeDataProvider<ScoreItem> {
     }
     return Promise.resolve([]);
   }
+
+    
 }
 
 class ScoreItem extends vscode.TreeItem {
   constructor(public readonly player: string, public readonly score: number) {
-    super(`${player}: ${score}점`);
+    super(`${player}: ${score} points`, vscode.TreeItemCollapsibleState.None);
   }
 }

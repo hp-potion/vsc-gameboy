@@ -38,6 +38,10 @@
         {
           "id": "scoreList",
           "name": "Score List"
+        },
+        {
+          "id": "globalScoreList",
+          "name": "Global Score List"
         }
       ]
     },
