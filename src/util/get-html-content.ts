@@ -14,7 +14,8 @@ function getHtmlContent(
     'utf8'
   );
 
-  htmlContent = addScoreScriptToHtml(htmlContent);
+  const userId = context.globalState.get<string>('user') ?? 'guest';
+  htmlContent = addScoreScriptToHtml(htmlContent, userId);
 
   htmlContent = htmlContent.replace(
     /(href|src|data)="(?!https)([^"]*)"/g,
