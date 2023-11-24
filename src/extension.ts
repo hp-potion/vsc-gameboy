@@ -48,7 +48,22 @@ export function activate(context: vscode.ExtensionContext) {
       openGamePanel(context, game);
     }
   );
+  // make user login as a guest or github user
+  vscode.window
+    .showInputBox({ prompt: 'Enter your Github ID' })
+    .then(async user => {
+      if (user) {
+        const userInfo: {
+          login: string;
+        } = await (await fetch(`https://api.github.com/users/${user}`)).json();
 
+        userInfo.login
+          ? vscode.window.showInformationMessage(`Welcome ${userInfo.login}!`)
+          : vscode.window.showErrorMessage('Invalid user. Login as guest');
+
+        context.globalState.update('user', userInfo.login ?? 'guest');
+      }
+    });
   // 커맨드를 확장 프로그램의 context에 추가하여 활성화 상태 유지
   context.subscriptions.push(openGameCommand);
 }

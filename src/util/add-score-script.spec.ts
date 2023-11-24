@@ -13,11 +13,11 @@ describe('Add score script to html', function () {
         <body>
               <script>
         const vscode = acquireVsCodeApi();
-        function sendScore(player, score) {
+        function sendScore(score) {
           vscode.postMessage({
             command: 'sendScore',
             score: score,
-            player: player
+            player: 'user'
           });
         }
       </script>
@@ -25,9 +25,8 @@ describe('Add score script to html', function () {
       </html>
     `;
     it('should equal to mock stringified html', function () {
-      console.log(addScoreScriptToHtml(inputHtml).replaceAll('\n', '').trim());
       assert.equal(
-        addScoreScriptToHtml(inputHtml).replaceAll('\n', '').trim(),
+        addScoreScriptToHtml(inputHtml, 'user').replaceAll('\n', '').trim(),
         mockHtml.replaceAll('\n', '').trim()
       );
     });

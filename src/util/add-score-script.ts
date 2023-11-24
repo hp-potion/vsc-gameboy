@@ -1,12 +1,12 @@
-function addScoreScriptToHtml(htmlContent: string): string {
+function addScoreScriptToHtml(htmlContent: string, userId: string): string {
   const scoreScript = `
       <script>
         const vscode = acquireVsCodeApi();
-        function sendScore(player, score) {
+        function sendScore(score) {
           vscode.postMessage({
             command: 'sendScore',
             score: score,
-            player: player
+            player: '${userId}'
           });
         }
       </script>
