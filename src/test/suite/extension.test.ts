@@ -15,7 +15,14 @@ suite('Extension Test Suite', () => {
 
       const Mockcontext = {
         extensionUri: vscode.Uri.parse('mock-uri'),
-        extensionPath: path.join(__dirname, '../../../'), // 현재 파일 위치 기준으로 상위 디렉토리를 지정
+        extensionPath: path.join(__dirname, '../../../'),
+        globalState: {
+          get: (key: string) => {
+            if (key === 'user') {
+              return 'test-user';
+            }
+          },
+        },
         // 다른 필요한 ExtensionContext 속성을 여기에 추가
       } as vscode.ExtensionContext;
 
