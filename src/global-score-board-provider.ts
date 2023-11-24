@@ -1,6 +1,4 @@
 import * as vscode from 'vscode';
-import axios from 'axios';  // Assuming axios is used for HTTP requests
-import { ScoreBoardProvider } from './score-board-provider';
 
 interface GlobalScore {
   user: string;
@@ -33,8 +31,8 @@ export class GlobalScoreBoardProvider implements vscode.TreeDataProvider<ScoreIt
 
   private async getGlobalScores(): Promise<ScoreItem[]> {
     try {
-      const response = await axios.get(`http://54.180.141.215/score/?game=${this.gameId}`);
-      const scoresData: GlobalScore[] = response.data;
+      const response = await ((await fetch(`http://54.180.141.215/score/?game=${this.gameId}`)).json());
+      const scoresData: GlobalScore[] = response;
       const sortedScores = scoresData.sort((a, b) => b.score - a.score);
 
       return sortedScores.map(score => new ScoreItem(score.user, score.score));
