@@ -277,7 +277,7 @@ function render() {
 
   // GAME OVER
   if (Game.gameOver) {
-    sendScore('player1', Game.score);
+    sendScore(Game.score);
     play('explosion');
 
     Game.ctx.fillStyle = 'white';
@@ -286,7 +286,9 @@ function render() {
     Game.ctx.font = `20px '${Game.font}'`;
     Game.ctx.fillText('Press R to restart', 220, 340);
 
-    if (Game.score > maxScore) localStorage.setItem('gameScore', Game.score);
+    if (Game.score > maxScore) {
+      localStorage.setItem('gameScore', Game.score);
+    }
 
     document.addEventListener('keyup', event => {
       restartGameHandler(event);

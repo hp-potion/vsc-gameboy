@@ -147,7 +147,7 @@ function gameOver() {
   sound.pause();
   finishSound.play();
   checkHighScore(account.score);
-  sendScore('player1', account.score);
+  sendScore(account.score);
   document.querySelector('#pause-btn').style.display = 'none';
   document.querySelector('#play-btn').style.display = '';
 }

@@ -186,7 +186,7 @@ addFruit();
 
 function openModal() {
   const score = scoreBoard.innerText;
-  sendScore('player1', score);
+  sendScore(score);
   document.getElementById('game-status').innerText = `${
     document.getElementById('game-status').innerText
   } YOUR SCORE : ${score}`;
