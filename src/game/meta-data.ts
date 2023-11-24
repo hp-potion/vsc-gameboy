@@ -47,6 +47,17 @@ const metaData: MetaData[] = [
       dark: 'suika.svg',
     },
   },
+  {
+    id: 'mine-sweeper',
+    title: 'Mine Sweeper',
+    description: 'Find hidden mine',
+    author: 'Cozy Coder',
+    root: 'index.html',
+    icon: {
+      light: 'mine-sweeper.svg',
+      dark: 'mine-sweeper.svg',
+    },
+  },
 ];
 
 export default metaData;
