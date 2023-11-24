@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" version="1.1">
+  <rect width="100%" height="100%" fill="black"/>
+  <polygon points="250,450 235,480 265,480" fill="white"/>
+  <circle cx="150" cy="100" r="10" fill="red"/>
+  <circle cx="200" cy="100" r="10" fill="red"/>
+  <circle cx="250" cy="100" r="10" fill="red"/>
+  <circle cx="300" cy="100" r="10" fill="red"/>
+  <circle cx="350" cy="100" r="10" fill="red"/>
+  <circle cx="150" cy="150" r="10" fill="blue"/>
+  <circle cx="200" cy="150" r="10" fill="blue"/>
+  <circle cx="250" cy="150" r="10" fill="blue"/>
+  <circle cx="300" cy="150" r="10" fill="blue"/>
+  <circle cx="350" cy="150" r="10" fill="blue"/>
+  <circle cx="150" cy="200" r="10" fill="green"/>
+  <circle cx="200" cy="200" r="10" fill="green"/>
+  <circle cx="250" cy="200" r="10" fill="green"/>
+  <circle cx="300" cy="200" r="10" fill="green"/>
+  <circle cx="350" cy="200" r="10" fill="green"/>
+  <circle cx="50" cy="50" r="2" fill="white"/>
+  <circle cx="100" cy="50" r="2" fill="white"/>
+  ...
+  <circle cx="450" cy="450" r="2" fill="white"/>
+  <text x="10" y="20" fill="white">Score: 0000</text>
+  <text x="400" y="20" fill="white">Lives: 3</text>
+</svg>
