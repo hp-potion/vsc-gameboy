@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
 import saveScore from './save-score';
 import { ScoreBoardProvider } from '../score-board-provider';
+import { GlobalScoreBoardProvider } from '../global-score-board-provider';
+import getGlobalScoreList from './get-global-score';
 
 /**
  * message handler for a webview panel.
@@ -14,16 +16,22 @@ function handlePanelMessages(
   panel: vscode.WebviewPanel,
   context: vscode.ExtensionContext,
   gameId: string,
-  scoreBoardProvider: ScoreBoardProvider
+  scoreBoardProvider: ScoreBoardProvider,
+  globalScoreBoardProvider: GlobalScoreBoardProvider
 ) {
   panel.webview.onDidReceiveMessage(
-    message => {
+    async message => {
       if (message.command === 'sendScore') {
         const score = message.score;
         const player = message.player;
         saveScore(context, gameId, { player, score });
         scoreBoardProvider.refresh();
+        
+        getGlobalScoreList(gameId,player,score);
+        globalScoreBoardProvider.getChildren();
+        globalScoreBoardProvider.refresh();
       }
+      
     },
     undefined,
     context.subscriptions
