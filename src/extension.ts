@@ -21,9 +21,15 @@ export function activate(context: vscode.ExtensionContext) {
   // 'gameExtension.openGame' 커맨드를 등록하고, 실행될 때 createGameWebview 함수를 호출
   const openGamePanel = (context: vscode.ExtensionContext, game: MetaData) => {
     const scoreBoardProvider = new ScoreBoardProvider(context, game.id);
-    const globalScoreBoardProvider = new GlobalScoreBoardProvider(context, game.id);
+    const globalScoreBoardProvider = new GlobalScoreBoardProvider(
+      context,
+      game.id
+    );
     vscode.window.registerTreeDataProvider('scoreList', scoreBoardProvider);
-    vscode.window.registerTreeDataProvider('globalScoreList', globalScoreBoardProvider);
+    vscode.window.registerTreeDataProvider(
+      'globalScoreList',
+      globalScoreBoardProvider
+    );
 
     if (openWebviews.has(game.id)) {
       const webViewPanel = openWebviews.get(game.id);
@@ -32,7 +38,13 @@ export function activate(context: vscode.ExtensionContext) {
       const panel = createWebviewPanel(context, game);
       panel.webview.html = getHtmlContent(context, panel.webview, game);
 
-      handlePanelMessages(panel, context, game.id, scoreBoardProvider,globalScoreBoardProvider);
+      handlePanelMessages(
+        panel,
+        context,
+        game.id,
+        scoreBoardProvider,
+        globalScoreBoardProvider
+      );
       openWebviews.set(game.id, panel);
 
       panel.onDidDispose(() => openWebviews.delete(game.id));
