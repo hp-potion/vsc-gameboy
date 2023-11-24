@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { MetaData } from '../game/meta-data';
+import addScoreScriptToHtml from './add-score-script';
 
 function getHtmlContent(
   context: vscode.ExtensionContext,
@@ -13,7 +14,8 @@ function getHtmlContent(
     'utf8'
   );
 
-  // 리소스 경로 변환 (스타일시트, 스크립트, 이미지 등)
+  htmlContent = addScoreScriptToHtml(htmlContent);
+
   htmlContent = htmlContent.replace(
     /(href|src|data)="(?!https)([^"]*)"/g,
     (_: any, type: 'href' | 'src' | 'data', extraPath: string) => {
