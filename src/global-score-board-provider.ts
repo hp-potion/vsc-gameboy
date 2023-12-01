@@ -5,16 +5,17 @@ interface GlobalScore {
   score: number;
 }
 
-export class GlobalScoreBoardProvider implements vscode.TreeDataProvider<ScoreItem> {
-
+export class GlobalScoreBoardProvider
+  implements vscode.TreeDataProvider<ScoreItem>
+{
   constructor(
     private context: vscode.ExtensionContext,
     private gameId: string
   ) {}
 
-  private _onDidChangeTreeData: vscode.EventEmitter<ScoreItem | undefined> = 
+  private _onDidChangeTreeData: vscode.EventEmitter<ScoreItem | undefined> =
     new vscode.EventEmitter<ScoreItem | undefined>();
-  readonly onDidChangeTreeData: vscode.Event<ScoreItem | undefined> = 
+  readonly onDidChangeTreeData: vscode.Event<ScoreItem | undefined> =
     this._onDidChangeTreeData.event;
 
   refresh(): void {
@@ -26,12 +27,16 @@ export class GlobalScoreBoardProvider implements vscode.TreeDataProvider<ScoreIt
   }
 
   getChildren(element?: ScoreItem): Thenable<ScoreItem[]> {
-      return this.getGlobalScores();
+    return this.getGlobalScores();
   }
 
   private async getGlobalScores(): Promise<ScoreItem[]> {
     try {
-      const response = await ((await fetch(`http://54.180.141.215/score/?game=${this.gameId}`)).json());
+      const response = await (
+        await fetch(
+          `${process.env.SCORE_SERVER_PATH}/score/?game=${this.gameId}`
+        )
+      ).json();
       const scoresData: GlobalScore[] = response;
       const sortedScores = scoresData.sort((a, b) => b.score - a.score);
 
@@ -41,11 +46,9 @@ export class GlobalScoreBoardProvider implements vscode.TreeDataProvider<ScoreIt
       return [];
     }
   }
-
 }
 
 class ScoreItem extends vscode.TreeItem {
-
   constructor(public readonly player: string, public readonly score: number) {
     super(`${player}: ${score} points`, vscode.TreeItemCollapsibleState.None);
   }
