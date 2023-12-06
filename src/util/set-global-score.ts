@@ -1,10 +1,4 @@
-import * as vscode from 'vscode';
-
-async function getGlobalScoreList(
-  gameId: string,
-  player: string,
-  score: number
-) {
+async function setGlobalScore(gameId: string, player: string, score: number) {
   try {
     await fetch(`${process.env.SCORE_SERVER_PATH}/score`, {
       method: 'POST',
@@ -25,4 +19,4 @@ async function getGlobalScoreList(
   }
 }
 
-export default getGlobalScoreList;
+export default setGlobalScore;

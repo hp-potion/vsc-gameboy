@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import saveScore from './save-score';
 import { ScoreBoardProvider } from '../score-board-provider';
 import { GlobalScoreBoardProvider } from '../global-score-board-provider';
-import getGlobalScoreList from './get-global-score';
+import setGlobalScore from './set-global-score';
 
 /**
  * message handler for a webview panel.
@@ -26,12 +26,11 @@ function handlePanelMessages(
         const player = message.player;
         saveScore(context, gameId, { player, score });
         scoreBoardProvider.refresh();
-        
-        getGlobalScoreList(gameId,player,score);
+
+        await setGlobalScore(gameId, player, score);
         await globalScoreBoardProvider.getChildren();
         globalScoreBoardProvider.refresh();
       }
-      
     },
     undefined,
     context.subscriptions
